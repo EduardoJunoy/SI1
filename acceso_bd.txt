@@ -1,0 +1,5 @@
+Este comando le dice a sudo que ejecute psql como el usuario postgres:
+	sudo su postgres
+
+	psql -U alumnodb -d si1
+	psql -U postgres si1

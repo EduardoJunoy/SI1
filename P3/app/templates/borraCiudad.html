@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+    <TITLE>Transacción con Flask SQLAlchemy: borraCiudad</TITLE>
+</HEAD>
+
+<BODY>
+
+    <h2> Transacción que borra ciudad</h2>
+
+    <form name="entrada" method="post" action="">
+        <table>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" name="ciudad" value="herman"></td>
+            </tr>
+        </table>
+        <p>
+            <input type="radio" name="txnSQL" value="1" checked="checked">Transacción vía sentencias SQL</input>
+            <br>
+            <input type="radio" name="txnSQL" value="0">Transacción vía funciones SQLAlchemy</input>
+        </p>
+        <p>
+            <input type="checkbox" name="bCommit">Ejecutar commit intermedio
+        </p>
+        <p>
+            <input type="checkbox" name="bFallo" checked="checked">Provocar error de integridad
+        </p>
+        <p>
+            Duerme <input type="text" name="duerme" value="0"> segundos (para forzar deadlock).
+        </p>
+        <p>
+            <input type="submit" value="Enviar" />
+        </p>
+    </form>
+
+    <h3>Trazas</h3>
+
+    <ol>
+        {% for paso in dbr %}
+        <li>{{ paso|safe }}</li>
+        {% endfor %}
+    </ol>
+
+</BODY>
+
+</HTML>
